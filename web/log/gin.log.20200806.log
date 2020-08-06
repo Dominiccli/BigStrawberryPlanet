@@ -1,0 +1,5 @@
+{"client_ip":"192.168.75.1","latency_time":6662,"level":"info","msg":"","req_method":"GET","req_uri":"/","status_code":200,"time":"2020-08-06 04:51:38"}
+{"client_ip":"192.168.75.1","latency_time":8202,"level":"info","msg":"","req_method":"GET","req_uri":"/user/get","status_code":200,"time":"2020-08-06 04:52:12"}
+{"client_ip":"192.168.75.1","latency_time":89,"level":"info","msg":"","req_method":"GET","req_uri":"/user/put","status_code":404,"time":"2020-08-06 04:52:19"}
+{"client_ip":"192.168.75.1","latency_time":75,"level":"info","msg":"","req_method":"GET","req_uri":"/user/post","status_code":404,"time":"2020-08-06 04:52:23"}
+{"client_ip":"192.168.75.1","latency_time":15322,"level":"info","msg":"","req_method":"GET","req_uri":"/user/get","status_code":200,"time":"2020-08-06 04:53:34"}

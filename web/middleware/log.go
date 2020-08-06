@@ -34,17 +34,17 @@ func LoggerToFile(logger *logrus.Logger) gin.HandlerFunc {
 	logfileAndStdoutWriter := io.MultiWriter(writers...)
 	logger.SetOutput(logfileAndStdoutWriter)
 	logger.SetOutput(os.Stdout)
-	//logger.SetFormatter(&logrus.JSONFormatter{
-	//	TimestampFormat:"2006-01-02 15:04:05",
-	//})
+	logger.SetFormatter(&logrus.JSONFormatter{
+		TimestampFormat:"2006-01-02 15:04:05",
+	})
 	// 设置日志级别
 	logger.SetLevel(logrus.DebugLevel)
 	// 设置 rotatelogs
 	logWriter, err := rotatelogs.New(
 		// 分割后的文件名称
-		conf.LOGFILESUBPATH + ".%Y%m%d.log",
+		LogFile + ".%Y%m%d.log",
 		// 生成软链，指向最新日志文件
-		rotatelogs.WithLinkName(conf.LOGFILENAME),
+		rotatelogs.WithLinkName(LogFile),
 		// 设置最大保存时间(7天)
 		rotatelogs.WithMaxAge(7*24*time.Hour),
 		// 设置日志切割时间间隔(1天)
