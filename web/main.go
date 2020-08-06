@@ -2,24 +2,32 @@ package main
 
 import (
 	"BigStrawberryPlanet/web/controller"
+	"BigStrawberryPlanet/web/middleware"
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 )
 
-
-// 添加 gin 框架开发
+var Logger = logrus.New()
 
 func main() {
 
-	router := gin.Default()
-	router.GET("/", func(c * gin.Context) {
+	engine := gin.New()
+	engine.Use(middleware.LoggerToFile(Logger))
+
+	engine.GET("/", func(c * gin.Context) {
 		c.Writer.WriteString("hello big strawberry planet...")
+
 	})
 
-	router.GET("/userGet", controller.UserGet)
-	router.POST("/userPost", controller.UserPost)
-	router.PUT("/userPut", controller.UserPut)
-	router.DELETE("/userDelete", controller.UserDelete)
+	// 根据服务划分路由
+	user := engine.Group("/user")
+	{
+		user.GET("/get", controller.UserGet)
+		user.POST("/post", controller.UserPost)
+		user.PUT("/put", controller.UserPut)
+		user.DELETE("/delete", controller.UserDelete)
+	}
 
-	router.Run()
+	engine.Run()
 
 }

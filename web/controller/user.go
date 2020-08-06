@@ -20,4 +20,3 @@ func UserDelete(ctx * gin.Context) {
 	ctx.Writer.WriteString("user delete ...")
 }
 
-
